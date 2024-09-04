@@ -1,16 +1,16 @@
-TEX_SOURCE := paper
+TEX_SOURCE := injoit-rus
 
-BUILDPARAM = -cd -f -pdf -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
-WATCHPARAM = -pvc -f -pdf -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
-TEMP_FILES = *.aux *.fdb_latexmk *.fls *.log *.out *.synctex.gz *.xdv *.bbl *.bcf *.blg *.run.xml *.toc ./mainfiles/*.aux
+BUILDPARAM = -cd -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
+WATCHPARAM = -pvc -f -xelatex -interaction=nonstopmode -synctex=1 -latexoption=-shell-escape
+TEMP_FILES = *.aux *.fdb_latexmk *.fls *.log *.out *.synctex.gz *.xdv *.bbl *.bcf *.blg *.run.xml *.toc
 
 .PHONY: build
 build:
-	xelatex $(BUILDPARAM) $(TEX_SOURCE).tex
+	latexmk $(BUILDPARAM) $(TEX_SOURCE).tex
 
 .PHONY: watch
 watch:
-	xelatex $(WATCHPARAM) $(TEX_SOURCE).tex
+	latexmk $(WATCHPARAM) $(TEX_SOURCE).tex
 
 .PHONY: clean
 clean:
